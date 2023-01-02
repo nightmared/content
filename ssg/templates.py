@@ -122,13 +122,13 @@ class Builder(object):
         self.remediations_dir = remediations_dir
         self.checks_dir = checks_dir
         self.platforms_dir = platforms_dir
-        self.cpe_items_dir = cpe_items_dir
         self.output_dirs = dict()
         self.templates = dict()
         self._init_lang_output_dirs()
         self._init_and_load_templates()
         self.product_cpes = ProductCPEs()
-        self.product_cpes.load_cpes_from_directory_tree(cpe_items_dir, self.env_yaml)
+        if cpe_items_dir is not None:
+            self.product_cpes.load_cpes_from_directory_tree(cpe_items_dir, self.env_yaml)
 
     def _init_and_load_templates(self):
         for item in sorted(os.listdir(self.templates_dir)):
