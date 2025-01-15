@@ -7,7 +7,11 @@ reference_type: stigid
 product: rhel9
 levels:
     -   id: high
+        inherits_from:
+            -   medium
     -   id: medium
+        inherits_from:
+            -   low
     -   id: low
 controls:
     -   id: needed_rules
